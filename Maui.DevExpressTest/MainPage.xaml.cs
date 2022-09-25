@@ -1,4 +1,6 @@
-﻿namespace Maui.DevExpressTest;
+﻿using Maui.DevExpressTest.ViewModels;
+
+namespace Maui.DevExpressTest;
 
 public partial class MainPage : ContentPage
 {
@@ -6,7 +8,7 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 
-		this.BindingContext = new List<string>() { "Milk", "Tea", "Coffee" };
+		this.BindingContext = new MainViewModel();
 	}
 }
 

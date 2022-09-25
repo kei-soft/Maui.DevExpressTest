@@ -11,7 +11,33 @@
             Spacing="25"
             VerticalOptions="Center">
 
-            <dxe:ComboBoxEdit ItemsSource="{Binding}" SelectedIndex="1" />
+            <dxe:ComboBoxEdit ItemsSource="{Binding Items}" SelectedIndex="1" />
+
+            <dxe:ComboBoxEdit
+                DisplayMember="Name"
+                ItemsSource="{Binding Persons}"
+                LabelText="Person"
+                SelectedIndex="1">
+                <dxe:ComboBoxEdit.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,*,*">
+                            <Label
+                                Padding="10"
+                                FontAttributes="Bold"
+                                Text="{Binding Name}" />
+                            <Label
+                                Grid.Column="1"
+                                Padding="10"
+                                Text="{Binding Age}" />
+                            <Label
+                                Grid.Column="2"
+                                Padding="10"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding Location}" />
+                        </Grid>
+                    </DataTemplate>
+                </dxe:ComboBoxEdit.ItemTemplate>
+            </dxe:ComboBoxEdit>
 
         </VerticalStackLayout>
     </ScrollView>
