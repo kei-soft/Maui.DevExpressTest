@@ -4,6 +4,29 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SelectItemTemplate">
+                <StackLayout Padding="5">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        Text="{Binding Name}"
+                        TextColor="Black" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            FontSize="Small"
+                            Text="{Binding Age, StringFormat='({0}) '}"
+                            TextColor="Gray" />
+                        <Label
+                            FontSize="Small"
+                            Text="{Binding Location}"
+                            TextColor="Gray" />
+                    </StackLayout>
+                </StackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout
@@ -17,7 +40,35 @@
                 DisplayMember="Name"
                 ItemsSource="{Binding Persons}"
                 LabelText="Person"
-                SelectedIndex="1">
+                SelectedIndex="0"
+                SelectedItemTemplate="{StaticResource SelectItemTemplate}">
+                <dxe:ComboBoxEdit.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,*,*">
+                            <Label
+                                Padding="10"
+                                FontAttributes="Bold"
+                                Text="{Binding Name}" />
+                            <Label
+                                Grid.Column="1"
+                                Padding="10"
+                                Text="{Binding Age}" />
+                            <Label
+                                Grid.Column="2"
+                                Padding="10"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding Location}" />
+                        </Grid>
+                    </DataTemplate>
+                </dxe:ComboBoxEdit.ItemTemplate>
+            </dxe:ComboBoxEdit>
+
+            <dxe:ComboBoxEdit
+                DisplayMember="Name"
+                FilterComparisonType="CurrentCultureIgnoreCase"
+                FilterMode="Contains"
+                IsFilterEnabled="True"
+                ItemsSource="{Binding Persons}">
                 <dxe:ComboBoxEdit.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnDefinitions="*,*,*">
