@@ -60,4 +60,8 @@
 	  </PackageReference>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\Images\keilogo.png" />
+	</ItemGroup>
+
 </Project>
