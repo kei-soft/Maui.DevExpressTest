@@ -51,6 +51,26 @@ namespace Maui.DevExpressTest.ViewModels
             }
         }
 
+        private ObservableCollection<PopulationModel> populationDatas;
+
+        public ObservableCollection<PopulationModel> PopulationDatas
+        {
+            get
+            {
+                if (this.populationDatas == null)
+                {
+                    this.populationDatas = new ObservableCollection<PopulationModel>();
+                }
+
+                return this.populationDatas;
+            }
+            set
+            {
+                this.populationDatas = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICommand MenuCommand => new Command<string>(p => OnMenuCommand(p));
 
         private void OnMenuCommand(string menu)
@@ -65,6 +85,19 @@ namespace Maui.DevExpressTest.ViewModels
             Persons.Add(new Person() { Name = "Devid", Age = 45, Location = "Atlanta" });
             Persons.Add(new Person() { Name = "Bernda", Age = 23, Location = "Memphis" });
             Persons.Add(new Person() { Name = "Sean", Age = 36, Location = "Hiuston" });
+
+
+            PopulationDatas.Add(new PopulationModel(new DateTime(1950, 1, 1), 546));
+            PopulationDatas.Add(new PopulationModel(new DateTime(1960, 1, 1), 605));
+            PopulationDatas.Add(new PopulationModel(new DateTime(1970, 1, 1), 656));
+            PopulationDatas.Add(new PopulationModel(new DateTime(1980, 1, 1), 694));
+            PopulationDatas.Add(new PopulationModel(new DateTime(1990, 1, 1), 721));
+            PopulationDatas.Add(new PopulationModel(new DateTime(2000, 1, 1), 730));
+            PopulationDatas.Add(new PopulationModel(new DateTime(2010, 1, 1), 728));
+            PopulationDatas.Add(new PopulationModel(new DateTime(2020, 1, 1), 721));
+            PopulationDatas.Add(new PopulationModel(new DateTime(2030, 1, 1), 704));
+            PopulationDatas.Add(new PopulationModel(new DateTime(2040, 1, 1), 680));
+            PopulationDatas.Add(new PopulationModel(new DateTime(2050, 1, 1), 650));
         }
     }
 }
